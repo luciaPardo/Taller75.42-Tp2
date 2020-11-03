@@ -21,4 +21,7 @@ Para lograr el tp, se comenzó intentando plantear un modelo de clases en las cu
 ![Diagrama clases](Diagramaclases.png)
 
 
+El tp no pudo concluirse y quedó incompleta la parte del dfs, ya que no logra detectar correctamente los ciclos o no.
+
+
 
