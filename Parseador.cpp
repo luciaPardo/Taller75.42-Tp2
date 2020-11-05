@@ -25,6 +25,7 @@ Parser::Parser(std::string archivo)
         : archivo(archivo)
 {}
 
+
 void Parser::file(std::unordered_map<std::string, int>& dic,
                   std::vector<std::vector<std::string>>& lineas){
     std::string line;

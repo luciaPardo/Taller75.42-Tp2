@@ -7,11 +7,9 @@ private:
     std::vector<Nodo*> adyacentes;
     bool visitado;
 public:
-    Nodo();
+    Nodo(int n);
+    int id;
     std::vector<Nodo*> & getAdy();
     void agregarAdy(Nodo* nodo);
-    void esVisitado();
-    void desvisitado();
-    bool fueVisitado();
 };
 #endif

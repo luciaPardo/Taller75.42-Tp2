@@ -6,24 +6,12 @@
 #include <vector>
 
 
-Nodo::Nodo()
-    : adyacentes(), visitado (false)
+Nodo::Nodo(int n)
+    : adyacentes(), visitado (false), id(n)
 {}
 std::vector<Nodo*>  &  Nodo::getAdy(){
     return this->adyacentes;
 }
 void Nodo::agregarAdy(Nodo* nodo){
     adyacentes.push_back(nodo);
-}
-
-void Nodo::esVisitado(){
-    visitado = true;
-}
-
-void Nodo::desvisitado(){
-    visitado = false;
-}
-
-bool Nodo::fueVisitado(){
-    return visitado;
 }

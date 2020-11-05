@@ -11,9 +11,10 @@
 class Grafo{
     std::vector<Nodo> nodos;
     int total_vertices;
-    bool detectarCiclo(int indice, Nodo& nodo, std::vector<bool>& stack);
+    bool detectarCiclo(int indice, Nodo& nodo, std::vector<bool>& stack, std::vector<bool>&  visitados);
+    bool esConexo();
+    void dfs(int indice, std::vector<bool>& visitados);
 public:
-    Grafo();
     Grafo(int);
     void agregarArista(int a, int b);
     int esCiclico();
