@@ -10,7 +10,7 @@ class SalaEspera {
 private:
    const int nro_threads;
    Monitor monitor_inic;
-   Monitor monitor_fin ;
+   Monitor monitor_fin;
 
 public:
     SalaEspera(int argc, char** argv);

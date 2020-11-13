@@ -6,6 +6,7 @@
 #include <cstring>
 #include <string>
 #include <iostream>
+#include <algorithm>
 
 Monitor::Monitor()
     :  mtx(), cola_bpfs()
@@ -17,22 +18,22 @@ void Monitor::push(std::string archivo){
 }
 
 void Monitor::pop(std::string& archivo){
-    std::lock_guard<std::mutex> lck (mtx);
+    std::lock_guard<std::mutex> lck(mtx);
     archivo = cola_bpfs.front();
     cola_bpfs.pop();
 }
 
 std::size_t Monitor::size(){
-    std::lock_guard<std::mutex> lck (mtx);
+    std::lock_guard<std::mutex> lck(mtx);
     return cola_bpfs.size();
 }
 
 bool Monitor::vacia(){
-    std::lock_guard<std::mutex> lck (mtx);
+    std::lock_guard<std::mutex> lck(mtx);
     return cola_bpfs.empty();
 }
 
-bool ordenarAlfabetico(std::string a, std::string b){
+bool ordenarAlfabetico(const std::string& a, const std::string& b){
     return a < b;
 }
 
@@ -45,7 +46,7 @@ void Monitor::imprimir(){
         ordenados.push_back(resultado);
     }
     std::sort(ordenados.begin(), ordenados.end(), ordenarAlfabetico);
-    for (int i = 0; i < ordenados.size(); i++) {
+    for (int i = 0; i < (int)ordenados.size(); i++) {
         std::cout << ordenados.at(i) << std::endl;
     }
 }

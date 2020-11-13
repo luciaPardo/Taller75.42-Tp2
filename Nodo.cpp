@@ -7,9 +7,9 @@
 
 
 Nodo::Nodo(int n)
-    : adyacentes(), visitado (false), id(n)
+    : adyacentes(), visitado(false), id(n)
 {}
-std::vector<Nodo*>  &  Nodo::getAdy(){
+std::vector<Nodo*>&  Nodo::getAdy(){
     return this->adyacentes;
 }
 void Nodo::agregarAdy(Nodo* nodo){

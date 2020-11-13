@@ -7,7 +7,7 @@ private:
     std::vector<Nodo*> adyacentes;
     bool visitado;
 public:
-    Nodo(int n);
+    explicit Nodo(int n);
     int id;
     std::vector<Nodo*> & getAdy();
     void agregarAdy(Nodo* nodo);

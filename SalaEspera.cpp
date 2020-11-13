@@ -16,7 +16,7 @@ SalaEspera::SalaEspera(int argc, char** argv)
         monitor_fin()
 {
     for (int i = 2; i < argc; i++){
-        std::string s (argv[i]);
+        std::string s(argv[i]);
         monitor_inic.push(s);
     }
 }
@@ -33,7 +33,6 @@ void SalaEspera::init(){ // vector de threads
 
 
 void SalaEspera::destroyThreads(std::vector<Thread*>& threads){
-
     for (int i = 0; i < nro_threads; ++i) {
         threads[i]->join();
         delete threads[i];

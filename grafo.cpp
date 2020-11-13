@@ -7,7 +7,7 @@
 #include <set>
 
 
-Grafo::Grafo(int total) : nodos (), total_vertices (total){
+Grafo::Grafo(int total) : nodos(), total_vertices(total){
     for (int i = 0; i < total_vertices; i++) {
         Nodo nodo_actual = Nodo(i);
         nodos.push_back(nodo_actual);
@@ -20,7 +20,7 @@ void Grafo::agregarArista(int a, int b){
 
 bool Grafo::detectarCiclo(int indice, Nodo& nodo, std::vector<bool>& stack,
                                             std::vector<bool>&  visitados){
-    if(!visitados[indice]) {
+    if (!visitados[indice]) {
         stack[indice] = true;
         visitados[indice] = true;
         std::vector < Nodo * > &adyacentes_act = nodo.getAdy();
@@ -40,7 +40,7 @@ bool Grafo::detectarCiclo(int indice, Nodo& nodo, std::vector<bool>& stack,
 void Grafo::dfs(int indice, std::vector<bool>& visitados){
 	visitados[indice] = true;
     std::vector<Nodo*>& adyacentes =  nodos[indice].getAdy();
-    for (int i = 0; i < adyacentes.size(); i++){
+    for (unsigned int i = 0; i < adyacentes.size(); i++){
         int n = (*adyacentes[i]).id;
 		if (!visitados[n]){
             dfs(n, visitados);

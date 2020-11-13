@@ -9,7 +9,7 @@ class Parser{
     std::string archivo;
 
 public:
-    Parser(std::string archivo);
+    explicit Parser(const std::string& archivo);
     void file(std::unordered_map<std::string, int>& dic,
                 std::vector<std::vector<std::string>>& lineas);
     void split(const std::string& str,

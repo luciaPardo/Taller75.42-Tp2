@@ -7,7 +7,7 @@
 #include "grafo.h"
 #include <vector>
 #include <string>
-
+#include <unordered_map>
 
 class Manejador : public Thread {
     Monitor& monitor_inic;
@@ -18,7 +18,7 @@ class Manejador : public Thread {
     void llenarGrafo(Grafo& grafo,
                      std::vector<std::vector<std::string>>& lineas,
                      std::unordered_map<std::string, int>& dic_et);
-    void revisarOpcode(int i, int pos_instr,
+    void revisarOpcode(size_t i, size_t pos_instr,
                        std::vector<std::vector<std::string>>& lineas,
                        std::unordered_map<std::string, int>& dic_et,
                        Grafo& grafo);

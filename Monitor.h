@@ -13,6 +13,7 @@
 class Monitor {
     std::mutex mtx;
     std::queue<std::string> cola_bpfs;
+    //static bool ordenarAlfabetico(const std::string a, const std::string b);
 
 public:
     Monitor();

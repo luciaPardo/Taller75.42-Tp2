@@ -21,7 +21,7 @@
 //        }
 //    }
 //}
-Parser::Parser(std::string archivo)
+Parser::Parser(const std::string& archivo)
         : archivo(archivo)
 {}
 
@@ -34,7 +34,7 @@ void Parser::file(std::unordered_map<std::string, int>& dic,
         return;
     }
     int nro_linea = 0;
-    while (getline(file, line) ){
+    while (getline(file, line)){
         std::vector<std::string> instrucciones;
         if (!line.empty()) {
             std::size_t etiqueta = line.find(":");
@@ -50,7 +50,8 @@ void Parser::file(std::unordered_map<std::string, int>& dic,
 }
 
 
-void Parser::split(const std::string& str, std::vector<std::string>& instruccion ){
+void Parser::split(const std::string& str,
+                            std::vector<std::string>& instruccion ){
     std::istringstream iss(str);
     std::copy(std::istream_iterator<std::string>(iss),
               std::istream_iterator<std::string>(),
@@ -58,18 +59,6 @@ void Parser::split(const std::string& str, std::vector<std::string>& instruccion
 }
 
 
-int Parser::BuscarEtiqueta(std::vector<std::vector<std::string>>& lineas,
-                                        std::string etiqueta_act, int i){
-    for (  ; i < lineas.size(); i++ ){
-        std::vector<std::string>::iterator pos = find(lineas[i].begin(),
-                                            lineas[i].end(),
-                                            etiqueta_act);
-        if (pos != lineas[i].end()){
-            return -1;
-        }
-        return pos - lineas[i].begin();
-    }
-}
 
 
 
