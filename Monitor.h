@@ -13,14 +13,11 @@
 class Monitor {
     std::mutex mtx;
     std::queue<std::string> cola_bpfs;
-    //static bool ordenarAlfabetico(const std::string a, const std::string b);
 
 public:
     Monitor();
-    void push(std::string archivo);
-    void pop(std::string& archivo);
-    std::size_t size();
-    bool vacia();
+    void push(std::string& archivo);
+    bool sacoArchivo(std::string& archivo);
     void imprimir();
 };
 

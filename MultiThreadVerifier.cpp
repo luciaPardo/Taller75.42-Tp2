@@ -1,4 +1,4 @@
-#include "SalaEspera.h"
+#include "MultiThreadVerifier.h"
 #include "Thread.h"
 #include "Monitor.h"
 #include "Manejador.h"
@@ -10,7 +10,7 @@
 #include <string>
 #include <iostream>
 
-SalaEspera::SalaEspera(int argc, char** argv)
+MultiThreadVerifier::MultiThreadVerifier(int argc, char** argv)
     :   nro_threads(atoi(argv[1])),
         monitor_inic(),
         monitor_fin()
@@ -21,7 +21,7 @@ SalaEspera::SalaEspera(int argc, char** argv)
     }
 }
 
-void SalaEspera::init(){ // vector de threads
+void MultiThreadVerifier::init(){ // vector de threads
     std::vector<Thread*> threads;
     for (int i = 0; i < nro_threads; ++i) {
         threads.push_back(new Manejador(monitor_inic, monitor_fin));
@@ -32,7 +32,7 @@ void SalaEspera::init(){ // vector de threads
 }
 
 
-void SalaEspera::destroyThreads(std::vector<Thread*>& threads){
+void MultiThreadVerifier::destroyThreads(std::vector<Thread*>& threads){
     for (int i = 0; i < nro_threads; ++i) {
         threads[i]->join();
         delete threads[i];

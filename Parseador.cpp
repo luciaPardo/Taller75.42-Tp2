@@ -10,17 +10,7 @@
 #include <iterator>
 #include <unordered_map>
 
-//int main(int argc, char* argv[]){
-//    Parser parse = Parser(argv[1]);
-//    std::unordered_map<std::string, int> dic;
-//    std::vector<std::vector<std::string>>& lista = parse.file(dic);
-//
-//    for (int i = 0; i < lista.size(); i++) {
-//        for (int j = 0; j < lista[i].size(); j++) {
-//            std::cout << "[" << lista[i][j] << "] " << std::endl;
-//        }
-//    }
-//}
+
 Parser::Parser(const std::string& archivo)
         : archivo(archivo)
 {}

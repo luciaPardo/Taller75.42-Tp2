@@ -1,5 +1,3 @@
-
-#include <bits/stdc++.h>
 #include "Nodo.h"
 #include <string>
 #include <iostream>
@@ -7,11 +5,15 @@
 
 
 Nodo::Nodo(int n)
-    : adyacentes(), visitado(false), id(n)
+    : adyacentes(), id(n)
 {}
 std::vector<Nodo*>&  Nodo::getAdy(){
     return this->adyacentes;
 }
 void Nodo::agregarAdy(Nodo* nodo){
     adyacentes.push_back(nodo);
+}
+
+int Nodo::getId(){
+    return id;
 }

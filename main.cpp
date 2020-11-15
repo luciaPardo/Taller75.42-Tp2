@@ -2,7 +2,7 @@
 #define MIN_ARG 3
 #include <vector>
 #include <iostream>
-#include "SalaEspera.h"
+#include "MultiThreadVerifier.h"
 
 
 int main(int argc, char *argv[]) {
@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
         std::cerr << "ERROR cant parámetros" << std::endl;
         return -1;
     }
-    SalaEspera sala(argc, argv);
+    MultiThreadVerifier sala(argc, argv);
     sala.init();
     return 0;
 }

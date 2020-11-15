@@ -25,7 +25,7 @@ bool Grafo::detectarCiclo(int indice, Nodo& nodo, std::vector<bool>& stack,
         visitados[indice] = true;
         std::vector < Nodo * > &adyacentes_act = nodo.getAdy();
         for (size_t i = 0; i < adyacentes_act.size(); ++i) {
-            int n = (*adyacentes_act[i]).id;
+            int n = (*adyacentes_act[i]).getId();
             if (!visitados[n] &&
                     detectarCiclo(n, *adyacentes_act[i], stack, visitados))
                 return true;
@@ -41,7 +41,7 @@ void Grafo::dfs(int indice, std::vector<bool>& visitados){
 	visitados[indice] = true;
     std::vector<Nodo*>& adyacentes =  nodos[indice].getAdy();
     for (unsigned int i = 0; i < adyacentes.size(); i++){
-        int n = (*adyacentes[i]).id;
+        int n = (*adyacentes[i]).getId();
 		if (!visitados[n]){
             dfs(n, visitados);
         }
@@ -63,7 +63,7 @@ bool Grafo::esConexo(){
 } 
 
 
-int Grafo::esCiclico(){
+int Grafo::esCiclicoYconexo(){
     std::vector<bool>  stack;
     std::vector<bool>  visitados;
 

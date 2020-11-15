@@ -14,7 +14,7 @@ class Manejador : public Thread {
     Monitor& monitor_fin;
     void mandarMensaje(Grafo& grafo, std::string archivo_actual);
     int buscarDic(std::unordered_map<std::string, int>& dic_et,
-                                        std::string etiqueta_act);
+                                        std::string& etiqueta_act);
     void llenarGrafo(Grafo& grafo,
                      std::vector<std::vector<std::string>>& lineas,
                      std::unordered_map<std::string, int>& dic_et);

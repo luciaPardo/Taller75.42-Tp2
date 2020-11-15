@@ -19,7 +19,7 @@ class Grafo{
 public:
     explicit Grafo(int);
     void agregarArista(int a, int b);
-    int esCiclico();
+    int esCiclicoYconexo();
 };
 
 

@@ -12,25 +12,19 @@ Monitor::Monitor()
     :  mtx(), cola_bpfs()
 {}
 
-void Monitor::push(std::string archivo){
+void Monitor::push(std::string& archivo){
     std::lock_guard<std::mutex> lck(mtx);
     cola_bpfs.push(archivo);
 }
 
-void Monitor::pop(std::string& archivo){
+bool Monitor::sacoArchivo(std::string& archivo){
     std::lock_guard<std::mutex> lck(mtx);
-    archivo = cola_bpfs.front();
-    cola_bpfs.pop();
-}
-
-std::size_t Monitor::size(){
-    std::lock_guard<std::mutex> lck(mtx);
-    return cola_bpfs.size();
-}
-
-bool Monitor::vacia(){
-    std::lock_guard<std::mutex> lck(mtx);
-    return cola_bpfs.empty();
+    if (!cola_bpfs.empty()) {
+        archivo = cola_bpfs.front();
+        cola_bpfs.pop();
+        return true;
+    }
+    return false;
 }
 
 bool ordenarAlfabetico(const std::string& a, const std::string& b){

@@ -60,7 +60,7 @@ void Manejador::revisarOpcode(size_t i, size_t pos_instr,
 }
 
 int Manejador::buscarDic(std::unordered_map<std::string, int>& dic_et,
-                                            std::string etiqueta_act){
+                                            std::string& etiqueta_act){
     auto elem = dic_et.find(etiqueta_act);
     if (elem == dic_et.end()){
         return -1;
@@ -69,11 +69,12 @@ int Manejador::buscarDic(std::unordered_map<std::string, int>& dic_et,
 }
 
 void Manejador::run(){
-    while (!monitor_inic.vacia()) {
+    while (true) {
         std::vector<std::vector<std::string>> lineas;
         std::unordered_map<std::string, int> dic_et;
         std::string archivo_actual;
-        monitor_inic.pop(archivo_actual);
+        if (! monitor_inic.sacoArchivo(archivo_actual))
+            break;
         Parser parse(archivo_actual);
         parse.file(dic_et, lineas);
         Grafo grafo(lineas.size());
@@ -83,7 +84,7 @@ void Manejador::run(){
 }
 
 void Manejador::mandarMensaje(Grafo& grafo, std::string archivo_actual){
-    int correcto = grafo.esCiclico();
+    int correcto = grafo.esCiclicoYconexo();
     if (correcto == BUENO)
          archivo_actual += " GOOD";
     else if (correcto == CICLO)
