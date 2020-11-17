@@ -73,7 +73,7 @@ void Manejador::run(){
         std::vector<std::vector<std::string>> lineas;
         std::unordered_map<std::string, int> dic_et;
         std::string archivo_actual;
-        if (! monitor_inic.sacoArchivo(archivo_actual))
+        if (! monitor_inic.popIfNotEmpty(archivo_actual))
             break;
         Parser parse(archivo_actual);
         parse.file(dic_et, lineas);
@@ -91,5 +91,5 @@ void Manejador::mandarMensaje(Grafo& grafo, std::string archivo_actual){
         archivo_actual += " FAIL: cycle detected";
     else if (correcto == AISLADO)
         archivo_actual += " FAIL: unused instructions detected";
-    monitor_fin.push(archivo_actual);
+    monitor_fin.pushResult(archivo_actual);
 }

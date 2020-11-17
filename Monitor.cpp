@@ -9,15 +9,19 @@
 #include <algorithm>
 
 Monitor::Monitor()
-    :  mtx(), cola_bpfs()
+    :  mtx(), mtx_exit(), cola_bpfs()
 {}
 
-void Monitor::push(std::string& archivo){
-    std::lock_guard<std::mutex> lck(mtx);
+void Monitor::pushResult(std::string& archivo){
+    std::lock_guard<std::mutex> lck(mtx_exit);
     cola_bpfs.push(archivo);
 }
 
-bool Monitor::sacoArchivo(std::string& archivo){
+void Monitor::push(std::string& archivo){
+    cola_bpfs.push(archivo);
+}
+
+bool Monitor::popIfNotEmpty(std::string& archivo){
     std::lock_guard<std::mutex> lck(mtx);
     if (!cola_bpfs.empty()) {
         archivo = cola_bpfs.front();
@@ -32,6 +36,7 @@ bool ordenarAlfabetico(const std::string& a, const std::string& b){
 }
 
 void Monitor::imprimir(){
+    std::lock_guard<std::mutex> lck(mtx);
     std::vector<std::string> ordenados;
     while (!cola_bpfs.empty()){
         std::string resultado;

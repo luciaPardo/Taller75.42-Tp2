@@ -12,12 +12,16 @@
 
 class Monitor {
     std::mutex mtx;
+    std::mutex mtx_exit;
     std::queue<std::string> cola_bpfs;
 
 public:
     Monitor();
+    /*Método THREAD UNSAFE, se usa cuando no hay hilos,
+    únicamente al principio*/
     void push(std::string& archivo);
-    bool sacoArchivo(std::string& archivo);
+    void pushResult(std::string& archivo);
+    bool popIfNotEmpty(std::string& archivo);
     void imprimir();
 };
 
